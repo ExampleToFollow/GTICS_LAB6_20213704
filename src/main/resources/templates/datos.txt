@@ -1,0 +1,8 @@
+INSERT INTO `labcito`.`rol` (`nombre`) VALUES ('admin');
+INSERT INTO `labcito`.`rol` (`nombre`) VALUES ('gerente');
+INSERT INTO `labcito`.`rol` (`nombre`) VALUES ('cliente');
+
+
+INSERT INTO `labcito`.`usuario` (`correo`, `password`, `nombre`, `apellido`, `estado`, `idRol`) VALUES ('hineill@gmail.com', '$2a$12$3CZFeu5WWlj5jdtKELwccO3RdittAiotu.lfwQ/KcK.OiEZSEJZQ6', 'Hineill', 'Cespedes', '1', '1');
+INSERT INTO `labcito`.`usuario` (`correo`, `password`, `nombre`, `apellido`, `estado`, `idRol`) VALUES ('yarleque@gmail.com', '$2a$12$3pHpEZnras/kWdg7.79CxueWxGqZHeQaE/itA6uET7YzgA1jm/1le', 'Manuel', 'Yarleque', '1', '2');
+INSERT INTO `labcito`.`usuario` (`correo`, `password`, `nombre`, `apellido`, `estado`, `idRol`) VALUES ('lewis@gmail.com', '$2a$12$JzW8il8/aB.kPst5q19gP.oWOuYppkifZgMjX7cvxsmVGcnM7tg5i', 'Lewis', 'Rengifo', '1', '3');
