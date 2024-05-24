@@ -7,30 +7,27 @@
 <div class="container">
     <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Mesas')}"></nav>
     <h2>Restaurante telecom</h2>
-    <a sec:authorize="hasAnyAuthority('admin')" class="btn btn-primary mt-4 mb-4" th:href="@{'/Mesas/createMesa'}">Agregar mesa</a>
+    <a sec:authorize="hasAnyAuthority('cliente')" class="btn btn-primary mt-4 mb-4" th:href="@{'/Reservas/createReserva'}">Agregar reserva</a>
     <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
     <table class="table">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Nombre</th>
-            <th>Capacidad</th>
-            <th>Ubicacion</th>
-            <th>Disponibles</th>
-            <th>editar</th>
-            <th>Borrar</th>
+            <th>Usuario</th>
+            <th>Mesa</th>
+            <th>FechaInicio</th>
+            <th>FechaFin</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="mesa : ${listaMesas}">
-            <td th:text="${mesa.getId()}"></td>
-            <td th:text="${mesa.getCapacidad()}"></td>
-            <td th:text="${mesa.getNombre()}"></td>
-            <td th:text="${mesa.getUbicacion()}"></td>
-            <td th:text="${mesa.getDisponibles()}"></td>
-            <td><a sec:authorize="hasAnyAuthority('admin')"  class="btn btn-primary" th:href="@{'/Mesas/editarMesas' + '?id=' + ${mesa.id}}">Editar</a>
-            </td>
-            <td><a sec:authorize="hasAnyAuthority('admin')" class="btn btn-danger" th:href="@{'/Mesas/borrarMesas' + '?id=' + ${mesa.id}}">Borrar</a>
+        <tr th:each="reserva : ${listaReservas}">
+            <td th:text="${reserva.getId()}"></td>
+            <td th:text="${reserva.getIdUsuario().getNombre()}"></td>
+            <td th:text="${reserva.getIdMesa().getNombre()}"></td>
+            <td th:text="${reserva.getFechaInicio()}"></td>
+            <td th:text="${reserva.getFechaFin()}"></td>
+            <td><a sec:authorize="hasAnyAuthority('cliente')" class="btn btn-danger" th:href="@{'/Reservas/deleteReserva' + '?id=' + ${reserva.id}}">Cancelar</a>
             </td>
         </tr>
         </tbody>
@@ -41,3 +38,4 @@
 <script th:replace="~{fragments/navbar.html :: footer-bootstrap}"></script>
 </body>
 </html>
+git
