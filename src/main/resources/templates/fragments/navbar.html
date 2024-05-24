@@ -10,7 +10,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4" th:fragment="navbar (active)">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Telecom 2024</a>
+        <a class="navbar-brand" href="#">Restaurante telecom</a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" sec:authorize="hasAnyAuthority('admin' , 'gerente')" th:classappend="${active == 'Mesas'?'active':''}"
+                    <a class="nav-link" sec:authorize="hasAnyAuthority('admin' , 'gerente' , 'cliente')" th:classappend="${active == 'Mesas'?'active':''}"
                        th:href="@{/Mesas/verMesas}">Mesas</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasAnyAuthority('gerente')">
@@ -34,7 +34,7 @@
                 <a th:href="@{/login}">(Iniciar Sesión)</a>
             </div>
             <div sec:authorize="isAuthenticated()">
-                <span th:text="|Bienvenido ${session.usuario.nombre} ${session.usuario.apellido}|"></span>
+                <span th:text="|Bienvenido  ${session.usuario.nombre} ${session.usuario.apellido}|"></span>
                 <form th:action="@{/logout}" method="post">
                     <input class="btn btn-link" type="submit" value="(Cerrar Sesión)">
                 </form>

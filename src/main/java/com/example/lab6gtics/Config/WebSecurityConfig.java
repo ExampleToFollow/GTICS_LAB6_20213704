@@ -60,31 +60,26 @@ public class WebSecurityConfig {
                     }
                     switch(rol){
                         case "admin":
-                            response.sendRedirect("/Dispositivo/verDispositivos");
+                            response.sendRedirect("/Mesas/verMesas");
                             break;
                         case "gerente":
-                            response.sendRedirect("/Dispositivo/verDispositivos");
+                            response.sendRedirect("/Mesas/verMesas");
                             break;
                         case "cliente":
-                            response.sendRedirect("/Dispositivo/verDispositivos");
+                            response.sendRedirect("/Mesas/verMesas");
                             break;
                     }
 
                 });
 
         http.authorizeHttpRequests()
-                .requestMatchers("/Dispositivo/**").hasAnyAuthority("admin", "profesor" , "alumno")
-                .requestMatchers("/Reserva/**").hasAuthority( "alumno")
-                .requestMatchers("/Prestamo/**").hasAnyAuthority( "profesor" , "alumno")
+                .requestMatchers("/Mesas/**").hasAnyAuthority("admin", "gerente" , "cliente")
+                .requestMatchers("/Reservas/**").hasAnyAuthority( "gerente" ,"cliente" )
                 .anyRequest().permitAll();
-
-
         http.logout()
                 .logoutSuccessUrl("/login")
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true);
-
-
         return http.build();
     }
 
